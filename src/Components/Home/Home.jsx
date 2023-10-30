@@ -2,20 +2,21 @@
 /* eslint-disable react/jsx-key */
 import { useEffect, useState } from "react";
 import './Home.css'
+import Cart from "../Cart/Cart";
 const Home = () => {
-     const [allActors, setallActors] = useState([]); 
+     const [allActors, setAllActors] = useState([]); 
      const [selectedActors, setSelectedActors] = useState([]);
     useEffect(() =>{
             fetch('../../../public/data.json')
             .then(res => res.json())
-            .then(data => setallActors(data))
+            .then(data => setAllActors(data))
     },[]) 
 
     const handleSelectActor = (actor) =>{
        setSelectedActors([...selectedActors,actor])
     }
 
-    console.log(selectedActors);
+    // console.log(selectedActors);
 
 
     return (
@@ -42,7 +43,7 @@ const Home = () => {
                 }
                </div>
                 <div className="cart">
-                    <h1>This is Cart</h1>
+                    <Cart selectedActors={selectedActors}></Cart>
                 </div>
             </div>
         </div>
