@@ -4,15 +4,20 @@ import { useEffect, useState } from "react";
 import './Home.css'
 const Home = () => {
      const [allActors, setallActors] = useState([]); 
+     const [selectedActors, setSelectedActors] = useState([]);
     useEffect(() =>{
             fetch('../../../public/data.json')
             .then(res => res.json())
             .then(data => setallActors(data))
     },[]) 
 
-    console.log(allActors);
+    const handleSelectActor = (actor) =>{
+       setSelectedActors([...selectedActors,actor])
+    }
 
-    console.log(allActors);
+    console.log(selectedActors);
+
+
     return (
         <div className='container'>
             <div className="home-container">
@@ -30,7 +35,7 @@ const Home = () => {
                          <p>Salary: {actor.salary}$</p></div>
                          <p>Writer: {actor.role}</p>
                          <div>
-                             <button className='card-btn'>Select</button>
+                             <button  onClick={()=>handleSelectActor(actor)} className='card-btn'>Select</button>
                          </div>
                      </div>
                     ))
