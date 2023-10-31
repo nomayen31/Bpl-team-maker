@@ -27,10 +27,16 @@ const Home = () => {
             selectedActors.forEach(item => {
                 count = count + item.salary;
             })
-            setTotalCose(count)
             const TotalRemaining = 20000 - count;
-            setRemaining(TotalRemaining)
-            setSelectedActors([...selectedActors, actor])
+            if (count >= 20000) {
+                return alert('taka sesh ar hobe na')
+            }
+            else {
+                setTotalCose(count)
+                setRemaining(TotalRemaining)
+                setSelectedActors([...selectedActors, actor])
+            }
+
         }
 
     }
