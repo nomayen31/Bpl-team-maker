@@ -1,10 +1,15 @@
 import './Cart.css'
 
 const Cart = ({selectedActors}) => {
-    console.log(selectedActors);
+    // const {id, age, country, image, name , role ,salary} = selectedActors;
     return (
         <div>
-            <h5>This is cart</h5>
+            <h5>Total Actors : {selectedActors.length}</h5>
+            {
+                selectedActors.map((actor)=>(
+                    <li key={actor.id}>{actor.name}</li>
+                ))
+            }
         </div>
     );
 };

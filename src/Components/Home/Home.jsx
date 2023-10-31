@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import './Home.css'
 import Cart from "../Cart/Cart";
 const Home = () => {
+
      const [allActors, setAllActors] = useState([]); 
      const [selectedActors, setSelectedActors] = useState([]);
     useEffect(() =>{
@@ -13,7 +14,23 @@ const Home = () => {
     },[]) 
 
     const handleSelectActor = (actor) =>{
-       setSelectedActors([...selectedActors,actor])
+        const isExist = selectedActors.find(item => item.id == actor.id);
+        let count = actor.salary;
+       if (isExist) {
+        
+           return(
+            alert('already added ')
+           )
+        
+       }else{
+        
+        selectedActors.forEach(item => {
+            count = count + item.salary;
+        })
+        console.log(count);
+        setSelectedActors([...selectedActors,actor])
+       }
+          
     }
 
     // console.log(selectedActors);
